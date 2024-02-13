@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Pet Store',
       theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme,),
+        textTheme: GoogleFonts.poppinsTextTheme(
+          Theme.of(context).textTheme,
+        ),
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0XFFFFFFFF)),
         useMaterial3: true,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -24,5 +26,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
