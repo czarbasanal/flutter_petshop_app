@@ -28,48 +28,51 @@ class HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Store'),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: widgetOptions.elementAt(selectedIndex),
-        ),
-        bottomNavigationBar: Theme(
-          data: ThemeData(
-              splashColor: Colors.transparent,
-              highlightColor: Colors.transparent),
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: 'Home',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.book_fill),
-                label: 'Catalog',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.cart_fill),
-                label: 'Cart',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.person_crop_circle_fill),
-                label: 'Profile',
-              ),
-            ],
-            currentIndex: selectedIndex,
-            unselectedItemColor: darkGrey,
-            selectedItemColor: goldYellow,
-            showSelectedLabels: true,
-            showUnselectedLabels: true,
-            selectedFontSize: 12.0,
-            iconSize: 30,
-            onTap: onItemTapped,
+    return SafeArea(
+      child: Scaffold(
+          appBar: AppBar(
+            title: const Text('Store'),
+            centerTitle: true,
+            surfaceTintColor: Colors.transparent,
           ),
-        ));
+          body: Center(
+            child: widgetOptions.elementAt(selectedIndex),
+          ),
+          bottomNavigationBar: Theme(
+            data: ThemeData(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent),
+            child: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(CupertinoIcons.book_fill),
+                  label: 'Catalog',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(CupertinoIcons.cart_fill),
+                  label: 'Cart',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(CupertinoIcons.person_crop_circle_fill),
+                  label: 'Profile',
+                ),
+              ],
+              currentIndex: selectedIndex,
+              unselectedItemColor: darkGrey,
+              selectedItemColor: goldYellow,
+              showSelectedLabels: true,
+              showUnselectedLabels: true,
+              selectedFontSize: 12.0,
+              iconSize: 30,
+              onTap: onItemTapped,
+            ),
+          )),
+    );
   }
 }
 
