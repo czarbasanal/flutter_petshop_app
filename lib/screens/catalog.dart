@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_petshop_app/app_styles.dart';
 import '../models/pets.dart';
 
 class CatalogPage extends StatelessWidget {
@@ -10,14 +13,14 @@ class CatalogPage extends StatelessWidget {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(30, 15, 30, 30),
+            padding: const EdgeInsets.fromLTRB(30, 16, 30, 0),
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search Product or Brand',
                 hintStyle: const TextStyle(fontSize: 14),
-                prefixIcon: const Icon(Icons.search),
+                prefixIcon: const Icon(CupertinoIcons.search),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(20),
                   borderSide: BorderSide.none,
                 ),
                 filled: true,
@@ -29,32 +32,77 @@ class CatalogPage extends StatelessWidget {
             child: GridView.builder(
               padding: const EdgeInsets.all(16),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 0.8,
-              ),
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 12,
+                  mainAxisSpacing: 12,
+                  childAspectRatio: 0.68),
               itemCount: pets.length,
               physics: const BouncingScrollPhysics(
                   parent: AlwaysScrollableScrollPhysics()),
               itemBuilder: (context, index) {
-                return Card(
-                  elevation: 2,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/${pets[index]['image']}',
-                        fit: BoxFit.cover,
-                        height: 140, // Adjust the size to fit your layout
+                return Container(
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(12.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.12),
+                        spreadRadius: 1,
+                        blurRadius: 8,
+                        offset: Offset(0, 2),
                       ),
-                      Text(pets[index]['name']),
-                      Text(pets[index]['price'],
-                          style: const TextStyle(fontWeight: FontWeight.bold)),
                     ],
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16.0),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(16.0),
+                            child: Image.asset(
+                              'assets/${pets[index]['image']}',
+                              fit: BoxFit.cover,
+                              height: 140,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                pets[index]['name'],
+                                style: const TextStyle(fontSize: 14),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(pets[index]['price'],
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold)),
+                              IconButton(
+                                  iconSize: 20.0,
+                                  splashColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  alignment: Alignment.center,
+                                  onPressed: () {
+                                    print("Cart button pressed!");
+                                  },
+                                  icon: const Icon(CupertinoIcons.cart_fill,
+                                      color: goldYellow)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 );
               },
