@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_petshop_app/screens/catalog.dart';
+import 'package:flutter_petshop_app/screens/catalog_details.dart';
+import 'package:flutter_petshop_app/screens/catalog_page.dart';
 import '../app_styles.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +17,8 @@ class HomePageState extends State<HomePage> {
   static const List<Widget> widgetOptions = <Widget>[
     HomePageContent(),
     CatalogPage(),
-    Text('Cart Placeholder'),
+    CatalogDetails(),
+    //Text('Cart Placeholder'),
     Text('Profile Placeholder'),
   ];
 
@@ -30,11 +32,11 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(
-            title: const Text('Store'),
-            centerTitle: true,
-            surfaceTintColor: Colors.transparent,
-          ),
+          // appBar: AppBar(
+          //   title: const Text('Store'),
+          //   centerTitle: true,
+          //   surfaceTintColor: Colors.transparent,
+          // ),
           body: Center(
             child: widgetOptions.elementAt(selectedIndex),
           ),
