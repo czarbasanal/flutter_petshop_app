@@ -32,11 +32,6 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          // appBar: AppBar(
-          //   title: const Text('Store'),
-          //   centerTitle: true,
-          //   surfaceTintColor: Colors.transparent,
-          // ),
           body: Center(
             child: widgetOptions.elementAt(selectedIndex),
           ),
