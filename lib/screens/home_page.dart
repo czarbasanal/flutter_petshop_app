@@ -80,7 +80,9 @@ class HomePageContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Column(
-        children: [Placeholder(child: Text('Home Page Placeholder'))],
+        children: [
+          Placeholder(child: Center(child: Text('Home Page Placeholder')))
+        ],
       ),
     );
   }

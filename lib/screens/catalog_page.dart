@@ -103,8 +103,6 @@ class CatalogPage extends StatelessWidget {
                                           fontWeight: FontWeight.bold)),
                                   IconButton(
                                       iconSize: 20.0,
-                                      splashColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
                                       alignment: Alignment.center,
                                       onPressed: () {
                                         print("Cart button pressed!");
