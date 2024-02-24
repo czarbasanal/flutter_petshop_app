@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_petshop_app/screens/catalog_details.dart';
 import 'package:flutter_petshop_app/screens/catalog_page.dart';
 import '../app_styles.dart';
 
@@ -17,8 +16,7 @@ class HomePageState extends State<HomePage> {
   static const List<Widget> widgetOptions = <Widget>[
     HomePageContent(),
     CatalogPage(),
-    CatalogDetails(),
-    //Text('Cart Placeholder'),
+    Text('Cart Placeholder'),
     Text('Profile Placeholder'),
   ];
 
