@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_petshop_app/app_styles.dart';
+import 'package:provider/provider.dart';
+import '../models/cart.dart';
 import '../models/pet.dart';
 
 class CatalogDetails extends StatelessWidget {
@@ -76,7 +78,15 @@ class CatalogDetails extends StatelessWidget {
                 ),
                 ElevatedButton.icon(
                   onPressed: () {
-                    // Handle button press
+                    var cart = Provider.of<Cart>(context, listen: false);
+                    cart.add(pet);
+
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('${pet.name} added to cart!'),
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
                   },
                   icon: const Icon(
                     CupertinoIcons.cart_badge_plus,

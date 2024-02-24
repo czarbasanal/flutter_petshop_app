@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'models/cart.dart';
 import 'screens/home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Cart(),
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

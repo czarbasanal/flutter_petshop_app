@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_petshop_app/app_styles.dart';
+import 'package:provider/provider.dart';
+import '../models/cart.dart';
 import '../models/pet.dart';
 import 'catalog_details.dart';
 
@@ -108,10 +110,32 @@ class CatalogPage extends StatelessWidget {
                                         iconSize: 20.0,
                                         alignment: Alignment.center,
                                         onPressed: () {
-                                          print("Cart button pressed!");
+                                          var cart = Provider.of<Cart>(context,
+                                              listen: false);
+                                          cart.add(pet);
+
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                  '${pet.name} added to cart!'),
+                                              duration: Duration(seconds: 1),
+                                              behavior:
+                                                  SnackBarBehavior.floating,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              margin: EdgeInsets.all(
+                                                  10), // Optional: Add a margin around the SnackBar
+                                              // Optional: Add elevation to elevate the SnackBar
+                                              elevation: 6.0,
+                                            ),
+                                          );
                                         },
                                         icon: const Icon(
-                                            CupertinoIcons.cart_fill,
+                                            CupertinoIcons.cart_fill_badge_plus,
+                                            size: 24,
                                             color: goldYellow)),
                                   ],
                                 ),
