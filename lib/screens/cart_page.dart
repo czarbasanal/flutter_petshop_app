@@ -17,6 +17,7 @@ class CartPage extends StatelessWidget {
           'Shopping Cart',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        automaticallyImplyLeading: false,
         surfaceTintColor: Colors.transparent,
       ),
       body: Consumer<Cart>(

@@ -3,7 +3,6 @@ import 'package:flutter_petshop_app/screens/onboarding_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'models/cart.dart';
-import 'screens/home_page.dart';
 
 void main() {
   runApp(
