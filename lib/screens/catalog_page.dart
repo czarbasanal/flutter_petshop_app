@@ -63,7 +63,7 @@ class _CatalogPageState extends State<CatalogPage> {
               child: TextField(
                 controller: _searchController,
                 decoration: InputDecoration(
-                  hintText: 'Search Product or Brand',
+                  hintText: 'Search Pet or Breed',
                   hintStyle: const TextStyle(fontSize: 14),
                   prefixIcon: const Icon(CupertinoIcons.search),
                   border: OutlineInputBorder(
@@ -116,6 +116,7 @@ class _CatalogPageState extends State<CatalogPage> {
                         padding: const EdgeInsets.all(12.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(16.0),
@@ -126,8 +127,10 @@ class _CatalogPageState extends State<CatalogPage> {
                               ),
                             ),
                             const SizedBox(height: 10),
-                            Text(pet.name,
-                                style: const TextStyle(fontSize: 14)),
+                            Text(
+                              pet.name,
+                              style: const TextStyle(fontSize: 14),
+                            ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

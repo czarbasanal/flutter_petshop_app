@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_petshop_app/screens/onboarding_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'models/cart.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: const HomePage(),
+      home: OnboardingPage(),
     );
   }
 }
