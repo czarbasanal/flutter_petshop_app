@@ -84,7 +84,13 @@ class CatalogDetails extends StatelessWidget {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text('${pet.name} added to cart!'),
-                        duration: const Duration(seconds: 2),
+                        duration: const Duration(seconds: 1),
+                        behavior: SnackBarBehavior.floating,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        margin: const EdgeInsets.all(10),
+                        elevation: 6.0,
                       ),
                     );
                   },

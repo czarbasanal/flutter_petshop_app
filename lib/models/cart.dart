@@ -39,24 +39,9 @@ class Cart extends ChangeNotifier {
     }
   }
 
-  void addQty(Pet pet) {
-    var existingItemIndex = _items.indexWhere((item) => item.pet == pet);
-    if (existingItemIndex != -1) {
-      _items[existingItemIndex].quantity++;
-      notifyListeners();
-    }
-  }
-
-  void subtractQty(Pet pet) {
-    var existingItemIndex = _items.indexWhere((item) => item.pet == pet);
-    if (existingItemIndex != -1) {
-      if (_items[existingItemIndex].quantity > 1) {
-        _items[existingItemIndex].quantity--;
-      } else {
-        _items.removeAt(existingItemIndex);
-      }
-      notifyListeners();
-    }
+  void clear() {
+    _items.clear();
+    notifyListeners();
   }
 
   double get totalPrice =>

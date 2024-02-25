@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../app_styles.dart';
 import '../models/cart.dart';
+import 'receipt.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -11,7 +13,11 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shopping Cart'),
+        title: const Text(
+          'Shopping Cart',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        surfaceTintColor: Colors.transparent,
       ),
       body: Consumer<Cart>(
         builder: (context, cart, child) {
@@ -24,12 +30,17 @@ class CartPage extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.builder(
+                  physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics()),
                   itemCount: cart.items.length,
                   itemBuilder: (context, index) {
                     final cartItem = cart.items[index];
                     return ListTile(
-                      leading: Image.asset(cartItem.pet.image,
-                          fit: BoxFit.cover, width: 50, height: 50),
+                      leading: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.asset(cartItem.pet.image,
+                            fit: BoxFit.cover, width: 50, height: 50),
+                      ),
                       title: Text(cartItem.pet.name),
                       subtitle: Text(
                           '\$${cartItem.pet.price.toStringAsFixed(0)} • ${cartItem.pet.location}'),
@@ -68,14 +79,31 @@ class CartPage extends StatelessWidget {
                   children: [
                     Text(
                       'Total: \$${cart.totalPrice.toStringAsFixed(2)}',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // Handle checkout
+                        final cart = Provider.of<Cart>(context, listen: false);
+
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => Receipt(
+                              cartItems: cart.items.toList(),
+                              totalPrice: cart.totalPrice,
+                            ),
+                          ),
+                        );
                       },
-                      child: Text('Checkout'),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: goldYellow,
+                        minimumSize: const Size(120, 50),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: const Text('Checkout'),
                     ),
                   ],
                 ),

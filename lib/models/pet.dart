@@ -116,7 +116,7 @@ List<Pet> pets = [
     height: 23.4,
     weight: 5.5,
     color: 'Black and Brown',
-    location: 'Los Angeles, CA',
+    location: 'Las Vegas, Nevada',
     eta: 15,
   )
 ];
